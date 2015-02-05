@@ -9,9 +9,9 @@ python:
   - "2.7"
 
 install:
-  - apt-get install asciidoc -y
-  - latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-  - wget -O bootstrap-$latestTag.zip https://github.com/llaville/asciidoc-bootstrap-backend/archive/$latestTag.zip
+  - sudo apt-get install asciidoc -y
+  - export latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+  - sudo wget -O bootstrap-$latestTag.zip https://github.com/llaville/asciidoc-bootstrap-backend/archive/$latestTag.zip
 
 script:
   - asciidoc --backend install bootstrap-$latestTag.zip
