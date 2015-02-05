@@ -1,0 +1,17 @@
+#
+# .travis.yml - configuration file for the travis continuous integration service
+#
+# see http://about.travis-ci.org/docs/user/languages/php for more hints
+#
+language: python
+
+python:
+  - "2.7"
+
+install:
+  - apt-get install asciidoc
+  - latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+  - wget -O bootstrap-$latestTag.zip https://github.com/llaville/asciidoc-bootstrap-backend/archive/$latestTag.zip
+
+script:
+  - asciidoc --backend install bootstrap-$latestTag.zip
